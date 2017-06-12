@@ -4,6 +4,10 @@
 # For copyright and licensing information about this package, see the
 # NOTICE.txt and LICENSE.txt files in its top-level directory; they are
 # https://github.com/ecaldwe1/file-type-converters
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License (MPL), version 2.0.  If a copy of the MPL was not distributed
+# with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import os
 
@@ -28,7 +32,7 @@ setup(
     # If omitted, the source directory defaults to the same directory as the setup script.
     packages=find_packages(),  # https://pythonhosted.org/setuptools/setuptools.html#using-find-packages
     #namespace_packages=['file-type-converters', ],
-    scripts=['scripts/om_expand.cmd', 'scripts/om_expand'],
+    scripts=['json2yaml.py', 'yaml2json.py'],
     install_requires=[
         'pyYAML'
     ],
