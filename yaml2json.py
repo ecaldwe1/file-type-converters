@@ -15,7 +15,6 @@ import logging
 import sys
 import yaml
 
-# sys.stdout.write(json.dumps(yaml.load(sys.stdin), sort_keys=True, indent=2))
 logging.basicConfig(filename='logs/yaml2json.log', filemode='w', level=logging.DEBUG)
 
 logging.info("----------------------- BEGINNING YAML CONVERT TO JSON -----------------------")
@@ -35,8 +34,7 @@ with open(input_yaml_file) as yaml_data:
     if len(sys.argv) == 3:
         output_json_file = sys.argv[2]
         new_json_filename = output_json_file
-        logging.info("Creating new file " + output_json_file)
-        json_file = open(output_json_file, 'w+')
+
     else:
         extension_index = 0
         if input_yaml_file.find('.yaml') != -1:
@@ -44,8 +42,9 @@ with open(input_yaml_file) as yaml_data:
         elif input_yaml_file.find('.yml') != -1:
             extension_index = input_yaml_file.find('.yml')
         new_json_filename = input_yaml_file[:extension_index] + '.json'
-        logging.info("Creating new file " + new_json_filename)
-        json_file = open(new_json_filename, 'w+')
+
+    logging.info("Creating new file " + new_json_filename)
+    json_file = open(new_json_filename, 'w+')
 
     # Dump the yaml into a json file
     logging.info(loaded_yaml)
