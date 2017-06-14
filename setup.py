@@ -31,7 +31,6 @@ setup(
     # find_packages() takes a source directory and two lists of package name patterns to exclude and include.
     # If omitted, the source directory defaults to the same directory as the setup script.
     packages=find_packages(),  # https://pythonhosted.org/setuptools/setuptools.html#using-find-packages
-    #namespace_packages=['file-type-converters', ],
     scripts=['json2yaml.py', 'yaml2json.py'],
     install_requires=[
         'pyYAML'
