@@ -31,12 +31,16 @@ with open(input_json_file) as json_data:
         sys.exit(1)
 
     # If output file is not provided, use same name as input file
+    new_yaml_filename = ""
     if len(sys.argv) == 3:
         output_yaml_file = sys.argv[2]
+        new_yaml_filename = output_yaml_file
+        logging.info("Creating new file " + output_yaml_file)
         yaml_file = open(output_yaml_file, 'w+')
     else:
         extension_index = input_json_file.find('.json')
-        new_yaml_filename = input_json_file[:7] + '.yml'
+        new_yaml_filename = input_json_file[:extension_index] + '.yml'
+        logging.info("Creating new file " + new_yaml_filename)
         yaml_file = open(new_yaml_filename, 'w+')
 
     # Dump the json into a yaml file

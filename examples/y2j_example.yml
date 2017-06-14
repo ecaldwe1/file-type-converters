@@ -1,0 +1,34 @@
+---
+!!map {
+  ? !!str "properties"
+  : !!map {
+    ? !!str "age"
+    : !!map {
+      ? !!str "description"
+      : !!str "Age in years",
+      ? !!str "minimum"
+      : !!int "0",
+      ? !!str "type"
+      : !!str "integer",
+    },
+    ? !!str "firstName"
+    : !!map {
+      ? !!str "type"
+      : !!str "string",
+    },
+    ? !!str "lastName"
+    : !!map {
+      ? !!str "type"
+      : !!str "string",
+    },
+  },
+  ? !!str "required"
+  : !!seq [
+    !!str "firstName",
+    !!str "lastName",
+  ],
+  ? !!str "title"
+  : !!str "Person",
+  ? !!str "type"
+  : !!str "object",
+}

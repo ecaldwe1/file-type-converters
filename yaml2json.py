@@ -9,32 +9,52 @@
 # License (MPL), version 2.0.  If a copy of the MPL was not distributed
 # with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+
 import json
+import logging
 import sys
 import yaml
 
 # sys.stdout.write(json.dumps(yaml.load(sys.stdin), sort_keys=True, indent=2))
+logging.basicConfig(filename='logs/yaml2json.log', filemode='w', level=logging.DEBUG)
 
-print("----------------------- BEGINNING YAML CONVERT TO JSON -----------------------")
+logging.info("----------------------- BEGINNING YAML CONVERT TO JSON -----------------------")
 
 input_yaml_file = sys.argv[1]
 
-# with open(input_yaml_file) as yaml_data:
-loaded_yaml = yaml.load(input_yaml_file)
-    # if len(sys.argv) == 3:
-    #     output_yaml_file = sys.argv[2]
-    #     yaml_file = open(output_yaml_file, 'w+')
-    # else:
-    #     extension_index = input_json_file.find('.json')
-    #     new_yaml_filename = input_json_file[:7] + '.yml'
-    #     yaml_file = open(new_yaml_filename, 'w+')
-    # ydump = yaml.safe_dump(loaded_json, yaml_file, allow_unicode=False,
-    #                        default_flow_style=False, indent=2, canonical=True)
-    # yaml_file.close()
-    # json_data.close()
-    #
-    # print "Converted " + input_json_file + " to " + new_yaml_filename + "!"
+with open(input_yaml_file) as yaml_data:
+    # Try to load the yaml from the input file. Fails if error in yaml file.
+    try:
+        loaded_yaml = yaml.load(yaml_data)
+    except yaml.YAMLError, e:
+        logging.debug("YAML Error in file: ", e)
+        sys.exit(1)
 
-print("----------------------- JSON DUMP COMPLETE -----------------------------------")
+    # If output file is not provided, use same name as input file
+    new_json_filename = ""
+    if len(sys.argv) == 3:
+        output_json_file = sys.argv[2]
+        new_json_filename = output_json_file
+        logging.info("Creating new file " + output_json_file)
+        json_file = open(output_json_file, 'w+')
+    else:
+        extension_index = 0
+        if input_yaml_file.find('.yaml') != -1:
+            extension_index = input_yaml_file.find('.yaml')
+        elif input_yaml_file.find('.yml') != -1:
+            extension_index = input_yaml_file.find('.yml')
+        new_json_filename = input_yaml_file[:extension_index] + '.json'
+        logging.info("Creating new file " + new_json_filename)
+        json_file = open(new_json_filename, 'w+')
 
-# python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < helloworld.yml > helloworld.json
+    # Dump the yaml into a json file
+    logging.info(loaded_yaml)
+    jdump = json.dump(loaded_yaml, json_file, indent=2)
+
+    # Close both the input and output files
+    yaml_data.close()
+    json_file.close()
+
+    logging.info("Converted " + input_yaml_file + " to " + new_json_filename + "!")
+
+logging.info("----------------------- JSON DUMP COMPLETE -----------------------------------")
