@@ -1,6 +1,10 @@
 # file-type-converters
 A collection of scripts to convert files into different formats
 
+Currently supported converters:
+ - [json2yaml](https://github.com/ecaldwe1/file-type-converters/tree/master#json2yaml)
+ - [yaml2json](https://github.com/ecaldwe1/file-type-converters/tree/master#yaml2json)
+
 ### json2yaml
 Convert a json file into a yaml file. 
 
