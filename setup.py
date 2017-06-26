@@ -13,7 +13,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="file-type-converters",
-    version="0.0.2",
+    version="0.0.4",
     author="E. Caldwell",
     author_email="ecaldwe1@nd.edu",
     description="File conversion library to translate YAML into JSON and vice versa",
@@ -23,7 +23,7 @@ setup(
     # find_packages() takes a source directory and two lists of package name patterns to exclude and include.
     # If omitted, the source directory defaults to the same directory as the setup script.
     packages=find_packages(),  # https://pythonhosted.org/setuptools/setuptools.html#using-find-packages
-    scripts=['json2yaml.py', 'yaml2json.py'],
+    scripts=['converters/json2yaml.py', 'converters/yaml2json.py'],
     install_requires=[
         'pyYAML'
     ],

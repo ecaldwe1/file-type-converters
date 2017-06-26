@@ -16,8 +16,7 @@ import sys
 import tempfile
 import yaml
 
-tempdir = tempfile.mkdtemp()
-fd, temp_path = tempfile.mkstemp(prefix='yaml2json_log_', dir=tempdir)
+fd, temp_path = tempfile.mkstemp(prefix='yaml2json_log_', suffix='.log')
 
 logging.basicConfig(filename=temp_path, filemode='w', level=logging.DEBUG)
 
