@@ -13,7 +13,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="file-type-converters",
-    version="0.0.1",
+    version="0.0.2",
     author="E. Caldwell",
     author_email="ecaldwe1@nd.edu",
     description="File conversion library to translate YAML into JSON and vice versa",
