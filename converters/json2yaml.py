@@ -14,9 +14,13 @@
 import json
 import logging
 import sys
+import tempfile
 import yaml
 
-logging.basicConfig(filename='logs/json2yaml.log', filemode='w', level=logging.DEBUG)
+tempdir = tempfile.mkdtemp()
+fd, temp_path = tempfile.mkstemp(prefix='json2yaml_log_', dir=tempdir)
+
+logging.basicConfig(filename=temp_path, filemode='w', level=logging.DEBUG)
 
 logging.info("----------------------- BEGINNING JSON CONVERT TO YAML -----------------------")
 

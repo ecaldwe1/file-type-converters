@@ -18,7 +18,7 @@ To run the example:
 
 `python json2yaml.py examples/j2y_example.json`
 
-You will notice that a file `examples/j2y_example.yml` is created when the script has finished. Additionally, a log file `logs/json2yaml.log` has been created. If there are errors running the script, check this log file.
+You will notice that a file `examples/j2y_example.yml` is created when the script has finished. Additionally, a temporary directory has been created to store the log files. The log file for this script will begin with the `json2yaml_log_` prefix. If there are errors running the script, check this log file.
 
 
 ### yaml2json
@@ -34,4 +34,4 @@ To run the example:
 
 `python yaml2json.py examples/y2j_example.yml`
 
-You will notice that a file `examples/y2j_example.json` is created when the script has finished. Additionally, a log file `logs/yaml2json.log` has been created. If there are errors running the script, check this log file.
+You will notice that a file `examples/y2j_example.json` is created when the script has finished. Additionally, a temporary directory has been created to store the log files. The log file for this script will begin with the `yaml2json_log_` prefix. If there are errors running the script, check this log file.

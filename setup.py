@@ -9,22 +9,14 @@
 # License (MPL), version 2.0.  If a copy of the MPL was not distributed
 # with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import os
-
 from setuptools import setup, find_packages
-
-base_dir = os.path.dirname(__file__)
-
-about = {}
-with open(os.path.join(base_dir, "vecnet", "openmalaria", "__about__.py")) as f:
-    exec(f.read(), about)
 
 setup(
     name="file-type-converters",
-    version=about["VERSION"],
-    author="E. Caldwell for University of Notre Dame",
+    version="0.0.1",
+    author="E. Caldwell",
     author_email="ecaldwe1@nd.edu",
-    description="File Conversion Library",
+    description="File conversion library to translate YAML into JSON and vice versa",
     license="Mozilla Public License 2.0 (MPL 2.0)",
     keywords="filetype yaml json",
     url="https://github.com/ecaldwe1/file-type-converters",
@@ -43,6 +35,5 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 2.7",
-        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
 )
